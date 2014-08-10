@@ -1,0 +1,37 @@
+###Motivation
+I created small project, based on couple of articles, as a remainder how I solved issues with runing zeromq on osx.
+
+###Prerequisite
+
+1. JDK Instaled
+
+###Instalation
+
+		brew install zeromq
+		brew install pkg-config
+
+Make sure that your pkg.m4 can be found /usr/share/aclocal
+
+		sudo ln -s /usr/local/share/aclocal/pkg.m4 /usr/share/aclocal/pkg.m4
+
+Get java bindings at [jzmq github](https://github.com/zeromq/jzmq). In folder do
+		
+		./autogen.sh
+		./configure
+		make
+		make install
+
+This creates zmq.jar library that is located in /usr/local/share/java. In this simple project I added this library through
+IDE
+
+Make sure to send this VM arguments before runing the main
+
+	-Djava.library.path=/usr/local/lib
+
+###Links
+
+[jzmq on osx](http://cbcg.net/blog/2011/07/30/getting-zeromq-and-jzmq-running-on-mac-os-x/)
+
+[jzmq on centos](http://mythinkpond.com/2013/06/24/working-with-zeromq-0mq-java-jzmq-on-a-centos-platform/)
+
+[jzmq on stack](http://stackoverflow.com/questions/3522248/how-do-i-compile-jzmq-for-zeromq-on-osx)
